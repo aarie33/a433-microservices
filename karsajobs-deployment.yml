@@ -5,7 +5,7 @@ metadata:
   labels:
     app: karsajobs-backend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: karsajobs-backend
@@ -18,7 +18,7 @@ spec:
       - name: karsajobs-backend
         image: aarie33/karsajobs:latest
         ports:
-        - containerPort: 3000
+        - containerPort: 8080
         env:
         - name: MONGO_URL
           valueFrom:
