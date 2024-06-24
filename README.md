@@ -24,3 +24,15 @@ Karsajobs read configuration from environment variable
   - `DELETE` delete job
 - /health
   - `GET` check app health status
+
+## Run Docker Build
+```
+chmod +x build_push_image_karsajobs.sh
+./build_push_image_karsajobs.sh
+```
+
+## Run Kubernetes
+```
+kubectl apply -f karsajobs-ui-deployment.yml
+kubectl apply -f karsajobs-ui-service.yml
+```
