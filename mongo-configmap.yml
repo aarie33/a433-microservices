@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-configmap
+data:
+  mongo-initdb-root-username: root
+  mongo-initdb-root-password: password
+
