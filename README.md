@@ -1,2 +1,3 @@
-# a433-microservices
-Repository ini digunakan untuk kebutuhan kelas Belajar Membangun Arsitektur Microservices
+## Generate base64 Username & Password
+echo -n 'root' | base64
+echo -n 'password' | base64
