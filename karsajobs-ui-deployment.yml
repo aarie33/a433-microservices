@@ -5,7 +5,7 @@ metadata:
   labels:
     app: karsajobs-frontend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: karsajobs-frontend
@@ -18,5 +18,5 @@ spec:
       - name: karsajobs-frontend
         image: aarie33/karsajobs-ui:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 8000
 
