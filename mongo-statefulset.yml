@@ -17,26 +17,24 @@ spec:
       - name: mongo
         image: mongo:4.4.3
         env:
-        - name: MONGO_INITDB_ROOT_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: mongo-secret
-              key: MONGO_ROOT_USERNAME
-        - name: MONGO_INITDB_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mongo-secret
-              key: MONGO_ROOT_PASSWORD
+        - name: MONGO_INITDB_ROOT_USERNAME_FILE
+          value: /etc/mongo-credentials/MONGO_ROOT_USERNAME
+        - name: MONGO_INITDB_ROOT_PASSWORD_FILE
+          value: /etc/mongo-credentials/MONGO_ROOT_PASSWORD
         volumeMounts:
-        - name: mongo-config-volume
-          mountPath: /etc/mongo
-          subPath: mongo.conf
+        - name: mongo-credentials
+          mountPath: /etc/mongo-credentials
         - name: mongo-data
           mountPath: /data/db
+        - name: mongo-config
+          mountPath: /config
       volumes:
-      - name: mongo-config-volume
+      - name: mongo-credentials
+        secret:
+          secretName: mongo-secret
+      - name: mongo-config
         configMap:
-          name: mongo-config
+          name: mongo-configmap
           items:
           - key: mongo.conf
             path: mongo.conf
