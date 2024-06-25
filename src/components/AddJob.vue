@@ -135,6 +135,7 @@ export default {
                 2000
               );
           }, error => {
+              console.log(process.env.VUE_APP_BACKEND)
               console.log(error)
               this.$notify(
                 { group: "error", title: "Failed", text: "Error when publishing job!" },
