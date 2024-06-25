@@ -20,9 +20,17 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        - name: MONGO_URL
+        - name: APP_PORT
+          value: "8080"
+        - name: MONGO_HOST
+          value: mongo-service
+        - name: MONGO_USER
           valueFrom:
             secretKeyRef:
               name: mongo-secret
-              key: mongo-url
-
+              key: MONGO_ROOT_USERNAME
+        - name: MONGO_PASS
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: MONGO_ROOT_PASSWORD
